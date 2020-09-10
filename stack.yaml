@@ -15,8 +15,7 @@
 # resolver:
 #  name: custom-snapshot
 #  location: "./custom-snapshot.yaml"
-resolver: lts-13.20
-
+resolver: nightly-2020-09-09
 # User packages to be built.
 # Various formats can be used as shown in the example below.
 #
@@ -39,14 +38,13 @@ packages:
 - .
 # Dependency packages to be pulled from upstream that are not in the resolver
 # (e.g., acme-missiles-0.3)
-extra-deps:
 
 # for text-builder
-- text-builder-0.6.5
-- deferred-folds-0.9.10
-- primitive-0.6.4.0
+# - text-builder-0.6.5
+# - deferred-folds-0.9.10
+# - primitive-0.6.4.0
 # for POSIX select(2)
-- select-0.4.0.1
+# - select-0.4.0.1
 # Override default flag values for local packages and extra-deps
 flags: {}
 
@@ -67,6 +65,56 @@ extra-package-dbs: []
 # Extra directories used by stack for building
 # extra-include-dirs: [/path/to/dir]
 # extra-lib-dirs: [/path/to/dir]
+#
+# Allow a newer minor version of GHC than the snapshot specifies
+# compiler-check: newer-minor
+extra-deps:
+  - Spock-core-0.13.0.0@sha256:06e007f23c47bdda52d2927da54160d73f1b6f51a977f3ca9087275698db8f0a,3400
+  - dependent-map-0.4.0.0@sha256:ca2b131046f4340a1c35d138c5a003fe4a5be96b14efc26291ed35fd08c62221,1657
+  - dependent-sum-0.7.1.0@sha256:5599aa89637db434431b1dd3fa7c34bc3d565ee44f0519bfbc877be1927c2531,2068
+  - ghc-heap-view-0.6.2@sha256:9e5cd76cfd23bd6d91788755967a82f68a1f25a1d6114910c2c78796079f2c32,3163
+  - immortal-0.2.2.1@sha256:df0066ff0de045bfe10bc13f85af33dcf9043d56bf70f5c943f45f0fbbde6f0c,1414
+  - monad-validate-1.2.0.0@sha256:9850f408431098b28806dd464b6825a88a0b56c84f380d7fe0454c1df9d6f881,3505
+  - stm-containers-1.1.0.4@sha256:f83a683357b6e3b1dda3e70d2077a37224ed534df1f74c4e11f3f6daa7945c5b,3248
+  - witherable-0.3.5@sha256:6590a15735b50ac14dcc138d4265ff1585d5f3e9d3047d5ebc5abf4cd5f50084,1476
+  - constraints-extras-0.3.0.2@sha256:013b8d0392582c6ca068e226718a4fe8be8e22321cc0634f6115505bf377ad26,1853
+  - monoidal-containers-0.6.0.1@sha256:83d67afa030925aa4d2c6a14b5b65c530fab0ae5fdc84faa2099910cadf34f19,2583
+  - reroute-0.5.0.0@sha256:3360747cdc700c9808a38bff48b75926efa443d4af282396082329a218a8d9d3,2446
+  - stm-hamt-1.2.0.4@sha256:7957497c022554b7599e790696d1a3e56359ad99e5da36a251894c626ca1f60a,3970
+  - primitive-extras-0.8@sha256:fca0310150496867f5b9421fe1541ecda87fae17eae44885a29f9c52dd00c8ff,2963
+  - primitive-unlifted-0.1.3.0@sha256:a98f827740f5dcf097d885b3a47c32f4462204449620abc9d51b8c4f8619f9e6,1427
+  - git: https://github.com/hasura/pool.git
+    commit: 0fdfaed4e109ca6a6bf00ed6d79c329626e3bdd4
+
+allow-newer: true
+# - acme-missiles-0.3
+# - git: https://github.com/commercialhaskell/stack.git
+#   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
+#
+# extra-deps: []
+
+# Override default flag values for local packages and extra-deps
+# flags: {}
+
+# Extra package databases containing global packages
+# extra-package-dbs: []
+
+# Control whether we use the GHC we find on the path
+# system-ghc: true
+#
+# Require a specific version of stack, using version ranges
+# require-stack-version: -any # Default
+# require-stack-version: ">=2.3"
+#
+# Override the architecture used by stack, especially useful on Windows
+# arch: i386
+# arch: x86_64
+#
+# Extra directories used by stack for building
+extra-include-dirs:
+  # - "/d/Program\ Files/PostgreSQL/12/include"
+extra-lib-dirs:
+  # - "/d/Program\ Files/PostgreSQL/12/lib"
 #
 # Allow a newer minor version of GHC than the snapshot specifies
 # compiler-check: newer-minor
